@@ -652,7 +652,8 @@ function showExpoQuestion() {
         $("#trialsInstruct").show();
       }, iti);
       setTimeout(function () {
-        $("#images").show();
+        $("#images").css("display", "flex")
+        $("#images").css("justify-content", "center")
       }, iti);
       setTimeout(function () {
         play(wordsExpo[currExpoTrial]);
@@ -1136,7 +1137,8 @@ function showMemoryTrials() {
       $("#noButton").show();
     }, iti);
     setTimeout(function () {
-      $("#memoryImages").show();
+      $("#memoryImages").css("display", "flex");
+      $("#memoryImages").css("justify-content", "center");
     }, iti);
     setTimeout(function () {
       $("#trialsInstruct").show();
@@ -1272,6 +1274,10 @@ function showDefTrials() {
         "visible";
       document.getElementById("testDefImage4").style.visibility =
         "visible";
+      $("testDefImage1").css("grid-area", " 1 / 1 / 2 / 2")
+      $("testDefImage2").css("grid-area", "  1 / 2 / 2 / 3")
+      $("testDefImage3").css("grid-area", " 2 / 2 / 3 / 3")
+      $("testDefImage4").css("grid-area", "  2 / 1 / 3 / 2")
     }
 
     setTimeout(function () {

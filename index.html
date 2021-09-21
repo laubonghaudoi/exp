@@ -38,7 +38,7 @@
 
 <body>
 
-	<div id = 'contact'>Email hzen@sas.upenn.edu with any issues</div>
+	<div id = 'contact'>Email <a class="text-blue-500" href="mailto:hzen@sas.upenn.edu">hzen@sas.upenn.edu</a> with any issues</div>
 	<div id = 'taskCounter', style = 'display:none'>Your progress: 0/5</div>
 
 		<!-- instructions -->
@@ -98,7 +98,7 @@
 		<img id ='testTypImage2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTypTestResponses(2)">	
 	</div>	
 
-	<div class="grid md:grid-flow-col" id='testDefImages', style = 'display:none'>
+	<div class="" id='testDefImages', style = 'display:none'>
 		<img id ='testDefImage1' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(1)">
 		<img id ='testDefImage2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(2)">
 		<img id ='testDefImage3' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(3)">
@@ -115,7 +115,7 @@
 
 
 
-<input type="text" id="audioTestBox", value="" onkeyup="checkForm('audioTestBox', 'contButton')" />
+<input class="border-2 border-gray rounded-md my-8" type="text" id="audioTestBox", value="" onkeyup="checkForm('audioTestBox', 'contButton')" />
 
 <audio id="player">
 	<source src="https://www.sas.upenn.edu/~hzen/CrossGist/images/lific.wav" type="audio/wav">
@@ -130,7 +130,7 @@
 
   		<div id = 'responses'>  </div>
 
-  		<input type='submit' id='submitButton' value='Submit' />
+  		<input class="bg-green-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded" type='submit' id='submitButton' value='Submit' />
 
   		<!-- demographcis -->
 
@@ -139,23 +139,23 @@
 			<p>Finally, please tell us a few things about you! After you complete the survey, click continue to proceed. The button will work only after you enter your response. </p>
 			<p>Age:<input id="age" name="Age" type="text" /></p>
 
-			<p>Gender:<select id="gender" name="Gender">
+			<p>Gender:<select class="border-2 border-gray rounded-md" id="gender" name="Gender">
 				<option>Female</option>
 				<option>Male</option>
 				<option>Other</option></select>
 
 			</p>
 
-			<p>Have you participated in this HIT before (doing a similar task seeing these shapes and colors) :<select id="priorParticipation" name="PriorParticipation">
+			<p>Have you participated in this HIT before (doing a similar task seeing these shapes and colors) :<select class="border-2 border-gray rounded-md" id="priorParticipation" name="PriorParticipation">
 				<option>No</option>
 				<option>Yes</option>
 				<option>Unsure</option></select>
 
 			</p>			
 
-			<p>Native Language:<input id="nativeLang" name="nativeLang" type="text" onkeyup="checkForm('nativeLang', 'contButton')" /></p>
+			<p>Native Language:<input class="border-2 border-gray rounded-md" id="nativeLang" name="nativeLang" type="text" onkeyup="checkForm('nativeLang', 'contButton')" /></p>
 
-			<p>What device did you use to complete this task?<select id="device" name="Device">
+			<p>What device did you use to complete this task?<select class="border-2 border-gray rounded-md" id="device" name="Device">
 
 				<option>Choose:</option>
 				<option>Desktop computer</option>
@@ -172,7 +172,7 @@
 
 			<p>If you have any comments about the task or experienced any glitches, let us know: 
 
-				<br><textarea id="comments" name="Comments" cols="100" rows="5"></textarea>
+				<br><textarea class="border-2 border-gray rounded-md my-8" id="comments" name="Comments" cols="100" rows="5"></textarea>
 
 			</p>
 
@@ -184,14 +184,14 @@
 
 
 	<!-- buttons -->
-		<button id = "playButton" style="display:none" onclick="play('77')">Play Audio</button>
-		<button id = "yesButton" style="display:none" onclick="recordYes()">Yes</button>
-		<button id = "noButton" style="display:none" onclick="recordNo()">No</button>
+		<button class="bg-yellow-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded" id = "playButton" style="display:none" onclick="play('77')">Play Audio</button>
+		<button class="bg-green-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded" id = "yesButton" style="display:none" onclick="recordYes()">Yes</button>
+		<button class="bg-red-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded" id = "noButton" style="display:none" onclick="recordNo()">No</button>
 
-		<button class="" id = "contButton" onclick="taskFunctions[currTask]()">Continue</button>
-		<button id = "contButtonExpo" style="display:none" onclick="showExpoQuestion()">Continue to Guess</button>
+		<button class="bg-blue-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded" id = "contButton" onclick="taskFunctions[currTask]()">Continue</button>
+		<button class="bg-blue-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded"  id = "contButtonExpo" style="display:none" onclick="showExpoQuestion()">Continue to Guess</button>
 
-		<button id = "nextButton" style="display:none" onclick="updateDefCount()">Next</button>
+		<button class="m-auto bg-purple-500 hover:bg-blue-dark text-white font-bold my-8 py-4 px-8 rounded"  id = "nextButton" style="display:none" onclick="updateDefCount()">Next</button>
 
 
 
