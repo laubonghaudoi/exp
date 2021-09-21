@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+	<!-- source JQuery, pull stmimuli and trial information from SAS website -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script> 
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/stimList.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/trialList.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/shuffle.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/getWorkerID.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/seedrandom.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/math.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/mturkfunctions.js"></script>
+
+	<script src="https://www.sas.upenn.edu/~hzen/CrossGist/scripts/helper_functions_zeng.js"></script>
+
+	<link href="https://s3.amazonaws.com/mturk-public/bs30/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+	<link href="./style.css" rel="stylesheet" />
+
+	<script src="./script.js"> </script>
+
+
+</head>
+
+<body>
+
+	<div id = 'contact'>Email hzen@sas.upenn.edu with any issues</div>
+	<div id = 'taskCounter', style = 'display:none'>Your progress: 0/5</div>
+
+		<!-- instructions -->
+
+	<div id="preInstructions">
+
+		<div id="preInstructions1", style="display:none">
+
+			<p>Please read the following consent form. By clicking 'Continue', you are agreeing to participate in a study from University of Pennsylvania's Psychology Department, and you are giving your consent for us to use your answers for research. Scroll down and press <b>CONTINUE</b> if you agree.</p>
+
+			<p><img src="https://www.sas.upenn.edu/~hzen/CrossGist/images/LNFFC_MTurk_2020.png" width="800"></p>
+
+		</div>
+
+	</div>
+
+	<div id='taskInstructions'>
+
+		<div id='taskInstruction' class='instructions' style = 'display:none'>
+			<p></p>
+		</div>
+
+		<div id='trialsInstruct' class='instructions' style = 'display:none'>
+			<p></p>
+		</div>
+
+	</div>
+
+
+<!-- the two main images -->	
+	<div id='images'>
+		<img id ='image1' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordResponses(1)">
+		<img id ='image2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordResponses(2)">
+	</div>
+
+	<div id='practiceImages', style = 'display:none'>
+		<img id ='image5' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordResponses(5)">
+		<img id ='image6' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordResponses(6)">
+	</div>	
+
+	<div id='trainImages', style = 'display:none'>
+		<img id ='imageTrain1' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTrainResponses(1, imageLoc)">
+		<img id ='imageTrain2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTrainResponses(2, imageLoc)">
+		<img id ='imageTrain3' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTrainResponses(3, imageLoc)">
+		<img id ='imageTrain4' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTrainResponses(4, imageLoc)">
+		<img id ='imageTrain5' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTrainResponses(5, imageLoc)">
+		<img id ='imageTrain6' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTrainResponses(6, imageLoc)">
+	</div>
+
+	<div id='testTypPracImages', style = 'display:none'>
+		<img id ='testTypPracImage1' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTypPracResponses(1)">
+		<img id ='testTypPracImage2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTypPracResponses(2)">	
+	</div>	
+
+	<div id='testTypImages', style = 'display:none'>
+		<img id ='testTypImage1' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTypTestResponses(1)">
+		<img id ='testTypImage2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordTypTestResponses(2)">	
+	</div>	
+
+	<div class="grid md:grid-flow-col" id='testDefImages', style = 'display:none'>
+		<img id ='testDefImage1' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(1)">
+		<img id ='testDefImage2' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(2)">
+		<img id ='testDefImage3' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(3)">
+		<img id ='testDefImage4' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg" onclick="recordDefTestResponses(4)">	
+	</div>	
+
+
+	<div id='memoryImages', style = 'display:none'>
+		<img id ='image' class = 'stim' src="https://www.sas.upenn.edu/~hzen/CrossGist/images/white.jpg">
+	</div>		
+
+
+
+
+
+
+<input type="text" id="audioTestBox", value="" onkeyup="checkForm('audioTestBox', 'contButton')" />
+
+<audio id="player">
+	<source src="https://www.sas.upenn.edu/~hzen/CrossGist/images/lific.wav" type="audio/wav">
+</audio>
+
+
+	<!-- never shown,  used to store responses and RTs on mturk -->
+
+	<form name='mturk_form' method='post' id='mturk_form' action='https://www.mturk.com/mturk/externalSubmit'>
+
+  		<input type='hidden' value='' name='assignmentId' id='assignmentId'/>
+
+  		<div id = 'responses'>  </div>
+
+  		<input type='submit' id='submitButton' value='Submit' />
+
+  		<!-- demographcis -->
+
+		<div id="demogs" class="instructions">
+
+			<p>Finally, please tell us a few things about you! After you complete the survey, click continue to proceed. The button will work only after you enter your response. </p>
+			<p>Age:<input id="age" name="Age" type="text" /></p>
+
+			<p>Gender:<select id="gender" name="Gender">
+				<option>Female</option>
+				<option>Male</option>
+				<option>Other</option></select>
+
+			</p>
+
+			<p>Have you participated in this HIT before (doing a similar task seeing these shapes and colors) :<select id="priorParticipation" name="PriorParticipation">
+				<option>No</option>
+				<option>Yes</option>
+				<option>Unsure</option></select>
+
+			</p>			
+
+			<p>Native Language:<input id="nativeLang" name="nativeLang" type="text" onkeyup="checkForm('nativeLang', 'contButton')" /></p>
+
+			<p>What device did you use to complete this task?<select id="device" name="Device">
+
+				<option>Choose:</option>
+				<option>Desktop computer</option>
+				<option>Laptop</option>
+				<option>Tablet</option>
+				<option>Phone</option>
+				<option>Other</option>
+
+				</select>
+
+			</p>
+
+		<div id ="feedback" class="instructions">
+
+			<p>If you have any comments about the task or experienced any glitches, let us know: 
+
+				<br><textarea id="comments" name="Comments" cols="100" rows="5"></textarea>
+
+			</p>
+
+		</div>
+
+		</div>
+
+	</form>
+
+
+	<!-- buttons -->
+		<button id = "playButton" style="display:none" onclick="play('77')">Play Audio</button>
+		<button id = "yesButton" style="display:none" onclick="recordYes()">Yes</button>
+		<button id = "noButton" style="display:none" onclick="recordNo()">No</button>
+
+		<button class="" id = "contButton" onclick="taskFunctions[currTask]()">Continue</button>
+		<button id = "contButtonExpo" style="display:none" onclick="showExpoQuestion()">Continue to Guess</button>
+
+		<button id = "nextButton" style="display:none" onclick="updateDefCount()">Next</button>
+
+
+
+
+
+</body>
+
+</html>
